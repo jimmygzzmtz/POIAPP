@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>
+      POIAPP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card>
+    <ion-card-content>
+        <ion-input [(ngModel)]="locString" placeholder="Enter Location"></ion-input>
+        <ion-input [(ngModel)]="typeString" placeholder="Enter Type"></ion-input>
+
+        <ion-fab [hidden]="balBool" vertical="center" horizontal="end" slot="fixed">
+            <ion-fab-button size="small" (click)="saveLocation()">
+              <ion-icon name="checkmark"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+    </ion-card-content>
+</ion-card>
+  
+  <ion-content>
+    <ion-card *ngFor="let poi of newPoi">
+      <ion-card-content>
+        <h2><b>{{ poi.name }}</b></h2>
+        <h3>{{ poi.location }}</h3>
+        <h3>{{ poi.type }}</h3>
+        <h3>{{ poi.description }}</h3>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+
