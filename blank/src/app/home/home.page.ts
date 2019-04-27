@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AdminPage } from '../admin/admin.page';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -12,29 +14,9 @@ export class HomePage {
   newPoi: any = [];
   apiURL = 'https://poiapi.herokuapp.com/pois';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, public modalController: ModalController) { 
     this.loadPOIS()
   }
-
-  /*
-  getPOIs() {
-    
-    console.log("hi")
-
-    return [{name: "lol", location: "Monterrey", type: "Park", description: "why"}]
-    
-    
-    this.http.get('https://poiapi.herokuapp.com/pois').subscribe((response) => {
-    console.log(response);
-    return response;
-    });
-    
-    
-
-    //console.log("hi")
-    
-  }
-  */
 
   loadPOIS(){
     this.http.get(this.apiURL).subscribe((response) => {
@@ -57,6 +39,25 @@ export class HomePage {
     }
     
     this.loadPOIS()
+  }
+
+  async openAdmin(){
+
+    const modal = await this.modalController.create({
+      component: AdminPage,
+      componentProps: { 
+      }
+    });
+
+    modal.onDidDismiss()
+      .then(() => {
+        
+        this.loadPOIS()
+        
+    });
+
+    await modal.present(); 
+
   }
 
 }

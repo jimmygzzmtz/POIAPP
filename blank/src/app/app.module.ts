@@ -11,10 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { AdminPage } from './admin/admin.page';
+import {FormsModule} from '@angular/forms';
+
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,],
+  declarations: [AppComponent, AdminPage],
+  entryComponents: [AdminPage],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     StatusBar,
     SplashScreen,
