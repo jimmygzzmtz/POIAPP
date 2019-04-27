@@ -4,12 +4,7 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "ng": "cd blank && ng",
-    "start": "cd blank && ng serve",
-    "build": "cd blank && ng build",
-    "test": "cd blank && ng test",
-    "lint": "cd blank && ng lint",
-    "e2e": "cd blank && ng e2e"
+    "start": "node server.js"
   },
   "private": true,
   "dependencies": {
@@ -25,10 +20,13 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.1.0",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.29",
     "typescript": "~3.1.6",
+    "zone.js": "~0.8.29"
+  },
+  "devDependencies": {
     "@angular-devkit/architect": "~0.13.8",
     "@angular-devkit/build-angular": "~0.13.8",
     "@angular-devkit/core": "~7.3.8",
@@ -52,9 +50,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~8.1.0",
     "tslint": "~5.16.0"
-  },
-  "devDependencies": {
-    
   },
   "description": "An Ionic project"
 }
