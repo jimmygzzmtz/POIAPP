@@ -4,12 +4,12 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "ng": "ng blank",
-    "start": "ng serve blank",
-    "build": "ng build blank",
-    "test": "ng test blank",
-    "lint": "ng lint blank",
-    "e2e": "ng e2e blank"
+    "ng": "cd blank && ng",
+    "start": "cd blank && ng serve",
+    "build": "cd blank && ng build",
+    "test": "cd blank && ng test",
+    "lint": "cd blank && ng lint",
+    "e2e": "cd blank && ng e2e"
   },
   "private": true,
   "dependencies": {
