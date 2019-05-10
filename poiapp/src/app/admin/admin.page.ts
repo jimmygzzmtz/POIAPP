@@ -11,9 +11,19 @@ export class AdminPage implements OnInit {
   usernameString: any;
   passwordString: any;
   deleteID: any;
-  addPOI: any;
+
+  addPOIName: any;
+  addPOILocation: any;
+  addPOIType: any;
+  addPOIDescription: any;
+  addPOIImage: any;
+
   updateID: any;
-  updatePOI: any;
+  updatePOIName: any;
+  updatePOILocation: any;
+  updatePOIType: any;
+  updatePOIDescription: any;
+  updatePOIImage: any;
 
 
   constructor(private http: HttpClient, public modalController: ModalController) { }
@@ -32,7 +42,9 @@ export class AdminPage implements OnInit {
 
   async createPOI(){
 
-    this.http.post("https://poiapi.herokuapp.com/" + this.usernameString + "/" + this.passwordString + "/pois/", JSON.parse(this.addPOI), {}).subscribe((response) => {
+    let createJSON = {"name":this.addPOIName, "location":this.addPOILocation, "type":this.addPOIType, "description":this.addPOIDescription, "image":this.addPOIImage}
+
+    this.http.post("https://poiapi.herokuapp.com/" + this.usernameString + "/" + this.passwordString + "/pois/", createJSON, {}).subscribe((response) => {
 
       });
 
@@ -41,7 +53,9 @@ export class AdminPage implements OnInit {
 
   async changePOI(){
 
-    this.http.patch("https://poiapi.herokuapp.com/" + this.usernameString + "/" + this.passwordString + "/pois/" + this.updateID, JSON.parse(this.updatePOI)).subscribe((response) => {
+    let changeJSON = {"id":this.updateID, "name":this.updatePOIName, "location":this.updatePOILocation, "type":this.updatePOIType, "description":this.updatePOIDescription, "image":this.updatePOIImage}
+
+    this.http.patch("https://poiapi.herokuapp.com/" + this.usernameString + "/" + this.passwordString + "/pois/" + this.updateID, changeJSON).subscribe((response) => {
 
       });
 
