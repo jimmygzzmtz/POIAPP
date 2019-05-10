@@ -5,7 +5,7 @@ var app = express();
 app.use(express.static(path.resolve(__dirname, "www")));
 
 app.get('/home', function (req, res) {
-    res.send('root')
+    res.redirect('/');
 })
 
 app.set('port', process.env.PORT || 3000);
