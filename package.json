@@ -4,8 +4,7 @@
   "author": "Jaime Gonzalez",
   "homepage": "https://ionicframework.com/",
   "scripts": {
-    "start": "cd poiapp & node server.js",
-    "build": "ionic build --prod"
+    "start": "cd poiapp & node server.js"
   },
   "private": true,
   "dependencies": {
