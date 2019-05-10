@@ -14,11 +14,18 @@
 <ion-card>
     <ion-card-content>
         <ion-input [(ngModel)]="locString" placeholder="Enter Location"></ion-input>
-        <ion-input [(ngModel)]="typeString" placeholder="Enter Type"></ion-input>
+        <ion-select [(ngModel)]="typeString" placeholder="Select a Type" interface="popover">
+            <ion-select-option value="Park">Park</ion-select-option>
+            <ion-select-option value="Nature">Nature</ion-select-option>
+            <ion-select-option value="Plaza">Park</ion-select-option>
+            <ion-select-option value="Sculpture">Sculpture</ion-select-option>
+            <ion-select-option value="Museum">Museum</ion-select-option>
+            <ion-select-option value="Building">Sculpture</ion-select-option>
+        </ion-select>
 
         <ion-fab vertical="center" horizontal="end" slot="fixed">
             <ion-fab-button size="small" (click)="saveLocation()" color="secondary">
-              <ion-icon name="checkmark"></ion-icon>
+              <ion-icon name="search"></ion-icon>
             </ion-fab-button>
         </ion-fab>
     </ion-card-content>
@@ -27,11 +34,12 @@
   <ion-content>
     <ion-card *ngFor="let poi of newPoi">
       <ion-card-content>
-        <h2><b>{{ poi.name }}</b></h2>
-        <h3>{{ poi.location }}</h3>
-        <h3>{{ poi.type }}</h3>
-        <h3>{{ poi.description }}</h3>
-        <h3>ID: {{ poi._id }}</h3>
+          <img style="-webkit-user-select: none;" src={{poi.image}} style="width:250px;height:200px;" class="center">
+        <h2 text-center><b>{{ poi.name }}</b></h2>
+        <h3 text-center>{{ poi.location }}</h3>
+        <h3 text-center>{{ poi.type }}</h3>
+        <h3 text-center>{{ poi.description }}</h3>
+        <h3 text-center>ID: {{ poi._id }}</h3>
       </ion-card-content>
     </ion-card>
   </ion-content>
