@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title text-center>
+        Admin Controls
+      </ion-title>
+    </ion-toolbar>
+    <ion-fab vertical="center" horizontal="end" slot="fixed">
+      <ion-fab-button size="small" (click)="dismiss()" color="secondary">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-header>
+
+  <ion-card>
+      <ion-card-content>
+          <ion-input [(ngModel)]="usernameString" placeholder="Username"></ion-input>
+          <ion-input [(ngModel)]="passwordString" placeholder="Password"></ion-input>
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-content>
+          <h2>Delete</h2>
+          <ion-input [(ngModel)]="deleteID" placeholder="ID"></ion-input>
+
+          <ion-fab vertical="center" horizontal="end" slot="fixed">
+              <ion-fab-button size="small" (click)="deletePOI()" color="danger">
+                <ion-icon name="trash"></ion-icon>
+              </ion-fab-button>
+          </ion-fab>
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-content>
+          <h2>Create</h2>
+          <ion-input [(ngModel)]="addPOI" placeholder="Object Data"></ion-input>
+
+          <ion-fab vertical="center" horizontal="end" slot="fixed">
+              <ion-fab-button size="small" (click)="createPOI()" color="secondary">
+                <ion-icon name="checkmark"></ion-icon>
+              </ion-fab-button>
+          </ion-fab>
+      </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+      <ion-card-content>
+          <h2>Update</h2>
+          <ion-input [(ngModel)]="updateID" placeholder="ID"></ion-input>
+          <ion-input [(ngModel)]="updatePOI" placeholder="Object Data"></ion-input>
+
+          <ion-fab vertical="center" horizontal="end" slot="fixed">
+              <ion-fab-button size="small" (click)="changePOI()" color="secondary">
+                <ion-icon name="checkmark"></ion-icon>
+              </ion-fab-button>
+          </ion-fab>
+      </ion-card-content>
+  </ion-card>
+
+<ion-content>
+
+</ion-content>

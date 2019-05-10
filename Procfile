@@ -1,0 +1,1 @@
+	web: cd poiapp && npm start
