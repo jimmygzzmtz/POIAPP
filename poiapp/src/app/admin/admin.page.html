@@ -5,12 +5,12 @@
       </ion-title>
     </ion-toolbar>
     <ion-fab vertical="center" horizontal="beginning" slot="fixed">
-      <ion-fab-button size="small" (click)="dismiss()" color="tertiary">
+      <ion-fab-button size="small" (click)="dismiss()" color="tertiary" title="Back">
         <ion-icon name="arrow-back"></ion-icon>
       </ion-fab-button>
     </ion-fab>
     <ion-fab vertical="center" horizontal="end" slot="fixed">
-        <ion-fab-button size="small" (click)="logout()" color="tertiary">
+        <ion-fab-button size="small" (click)="logout()" color="tertiary" title="Logout">
           <ion-icon name="exit"></ion-icon>
         </ion-fab-button>
     </ion-fab>
@@ -24,7 +24,7 @@
             <ion-input [(ngModel)]="deleteID" placeholder="ID"></ion-input>
   
             <ion-fab vertical="center" horizontal="end" slot="fixed">
-                <ion-fab-button size="small" (click)="deletePOI()" color="danger">
+                <ion-fab-button size="small" (click)="deletePOI()" color="danger" title="Delete">
                   <ion-icon name="trash"></ion-icon>
                 </ion-fab-button>
             </ion-fab>
@@ -51,7 +51,7 @@
             
   
             <ion-fab vertical="center" horizontal="end" slot="fixed">
-                <ion-fab-button size="small" (click)="createPOI()" color="tertiary">
+                <ion-fab-button size="small" (click)="createPOI()" color="tertiary" title="Create">
                   <ion-icon name="checkmark"></ion-icon>
                 </ion-fab-button>
             </ion-fab>
@@ -78,7 +78,7 @@
             <ion-input [(ngModel)]="updatePOIMaps" placeholder="Maps URL"></ion-input>
   
             <ion-fab vertical="center" horizontal="end" slot="fixed">
-                <ion-fab-button size="small" (click)="changePOI()" color="tertiary">
+                <ion-fab-button size="small" (click)="changePOI()" color="tertiary" title="Update">
                   <ion-icon name="checkmark"></ion-icon>
                 </ion-fab-button>
             </ion-fab>
