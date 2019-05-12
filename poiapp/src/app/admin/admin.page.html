@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
       <ion-title text-center>
-        POIApp Settings
+        {{titleName}}'s Tools
       </ion-title>
     </ion-toolbar>
     <ion-fab vertical="center" horizontal="beginning" slot="fixed">
@@ -47,6 +47,7 @@
             </ion-select>
             <ion-input [(ngModel)]="addPOIDescription" placeholder="Description"></ion-input>
             <ion-input [(ngModel)]="addPOIImage" placeholder="Image URL"></ion-input>
+            <ion-input [(ngModel)]="addPOIMaps" placeholder="Maps URL"></ion-input>
             
   
             <ion-fab vertical="center" horizontal="end" slot="fixed">
@@ -74,6 +75,7 @@
             </ion-select>
             <ion-input [(ngModel)]="updatePOIDescription" placeholder="Description"></ion-input>
             <ion-input [(ngModel)]="updatePOIImage" placeholder="Image URL"></ion-input>
+            <ion-input [(ngModel)]="updatePOIMaps" placeholder="Maps URL"></ion-input>
   
             <ion-fab vertical="center" horizontal="end" slot="fixed">
                 <ion-fab-button size="small" (click)="changePOI()" color="tertiary">

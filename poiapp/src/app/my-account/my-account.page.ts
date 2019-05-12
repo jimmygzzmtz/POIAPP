@@ -3,7 +3,6 @@ import { ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-my-account',
@@ -49,6 +48,8 @@ export class MyAccountPage implements OnInit {
 
   async login(){
     this.http.post('https://poiapi.herokuapp.com/accounts/login', {username: this.loginUsername, password: this.loginPassword}, {}).subscribe((response: any) => {
+
+      this.storage.set('name', response.account.username)
 
       this.storage.set('token', response.token)
 
