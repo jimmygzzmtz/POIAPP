@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AdminPage } from '../admin/admin.page';
 import { ModalController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { MyAccountPage } from '../my-account/my-account.page';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +16,38 @@ export class HomePage {
   newPoi: any = [];
   apiURL = 'https://poiapi.herokuapp.com/pois';
 
-  constructor(private http: HttpClient, public modalController: ModalController) { 
+  constructor(private http: HttpClient, public modalController: ModalController, private storage: Storage) { 
     this.loadPOIS()
+  }
+
+  ionViewWillEnter(){
+    this.storage.get('token').then((val) => {
+      if (val != "" && val != null){
+ 
+      }
+      else{
+        this.openMyAccount()
+      }
+    });
+  }
+
+  async openMyAccount(){
+
+    const modal = await this.modalController.create({
+      component: MyAccountPage,
+      componentProps: { 
+      },
+      backdropDismiss: false
+    });
+
+    modal.onDidDismiss()
+      .then(() => {
+        //location.reload()
+    });
+    
+
+    await modal.present(); 
+
   }
 
   loadPOIS(){

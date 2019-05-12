@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title text-center>
+          Account
+        </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-card>
+        <ion-card-content>
+            <h2>Login</h2>
+            <ion-input [(ngModel)]="loginUsername" placeholder="Username"></ion-input>
+            <ion-input [(ngModel)]="loginPassword" placeholder="Password" type="password"></ion-input>
+            
+            <ion-fab vertical="center" horizontal="end" slot="fixed">
+                <ion-fab-button size="small" (click)="login()" color="tertiary">
+                  <ion-icon name="checkmark"></ion-icon>
+                </ion-fab-button>
+            </ion-fab>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <h2>Sign Up</h2>
+            <ion-input [(ngModel)]="signUpUsername" placeholder="Username"></ion-input>
+            <ion-input [(ngModel)]="signUpPassword" placeholder="Password" type="password"></ion-input>
+
+            <ion-fab vertical="center" horizontal="end" slot="fixed">
+                <ion-fab-button size="small" (click)="signUp()" color="tertiary">
+                  <ion-icon name="checkmark"></ion-icon>
+                </ion-fab-button>
+            </ion-fab>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -26,26 +28,47 @@ export class AdminPage implements OnInit {
   updatePOIDescription: any;
   updatePOIImage: any;
 
+  httpHeader: any;
+  token: any
 
-  constructor(private http: HttpClient, public modalController: ModalController, public alertController: AlertController) { }
+
+  constructor(private http: HttpClient, public modalController: ModalController, public alertController: AlertController, private storage: Storage) {
+      this.storage.get('token').then((val) => {
+
+        this.token = val
+
+        this.httpHeader = new HttpHeaders({
+            'Authorization': 'Bearer ' + val
+          })
+      });
+
+      
+   }
 
   ngOnInit() {
   }
 
   async deletePOI(){
 
-    this.http.delete("https://poiapi.herokuapp.com/" + this.usernameString + "/" + this.passwordString + "/pois/" + this.deleteID).subscribe((response) => {
+    this.http.delete("https://poiapi.herokuapp.com/pois/" + this.deleteID, { headers: this.httpHeader}).subscribe((response) => {
         this.modalController.dismiss();
       },(err) => {this.FailAlert()});
 
     
   }
 
+  logout(){
+    this.http.post("https://poiapi.herokuapp.com/accounts/logout/", {}, { headers: this.httpHeader}).subscribe((response) => {
+        this.storage.clear();
+        location.reload()
+      },(err) => {this.FailAlert()});
+  }
+
   async createPOI(){
 
     let createJSON = {"name":this.addPOIName, "location":this.addPOILocation, "type":this.addPOIType, "description":this.addPOIDescription, "image":this.addPOIImage}
 
-    this.http.post("https://poiapi.herokuapp.com/" + this.usernameString + "/" + this.passwordString + "/pois/", createJSON, {}).subscribe((response) => {
+    this.http.post("https://poiapi.herokuapp.com/pois/", createJSON, { headers: this.httpHeader}).subscribe((response) => {
         this.modalController.dismiss();
       },(err) => {this.FailAlert()});
     
@@ -55,7 +78,7 @@ export class AdminPage implements OnInit {
 
     let changeJSON = {"id":this.updateID, "name":this.updatePOIName, "location":this.updatePOILocation, "type":this.updatePOIType, "description":this.updatePOIDescription, "image":this.updatePOIImage}
 
-    this.http.patch("https://poiapi.herokuapp.com/" + this.usernameString + "/" + this.passwordString + "/pois/" + this.updateID, changeJSON).subscribe((response) => {
+    this.http.patch("https://poiapi.herokuapp.com/pois/" + this.updateID, changeJSON, { headers: this.httpHeader}).subscribe((response) => {
         this.modalController.dismiss();
       },(err) => {this.FailAlert()});
 
@@ -67,7 +90,8 @@ export class AdminPage implements OnInit {
 
   async FailAlert(){
     const alert = await this.alertController.create({
-      header: 'Missing or incorrect inputs',
+      header: 'Error',
+      message: 'Check your inputs, and make sure you have the authorization required.',
       buttons: [
         {
             text: 'OK'

@@ -12,12 +12,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AdminPage } from './admin/admin.page';
+import { MyAccountPage } from './my-account/my-account.page';
 import {FormsModule} from '@angular/forms';
+import { IonicStorageModule } from '@ionic/storage';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, AdminPage],
-  entryComponents: [AdminPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [AppComponent, AdminPage, MyAccountPage],
+  entryComponents: [AdminPage, MyAccountPage],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, IonicStorageModule.forRoot(), ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,

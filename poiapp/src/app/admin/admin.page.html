@@ -1,24 +1,22 @@
 <ion-header>
     <ion-toolbar>
       <ion-title text-center>
-        Admin Controls
+        POIApp Settings
       </ion-title>
     </ion-toolbar>
-    <ion-fab vertical="center" horizontal="end" slot="fixed">
-      <ion-fab-button size="small" (click)="dismiss()" color="secondary">
+    <ion-fab vertical="center" horizontal="beginning" slot="fixed">
+      <ion-fab-button size="small" (click)="dismiss()" color="tertiary">
         <ion-icon name="arrow-back"></ion-icon>
       </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="center" horizontal="end" slot="fixed">
+        <ion-fab-button size="small" (click)="logout()" color="tertiary">
+          <ion-icon name="exit"></ion-icon>
+        </ion-fab-button>
     </ion-fab>
   </ion-header>
 
 <ion-content>
-
-    <ion-card>
-        <ion-card-content>
-            <ion-input [(ngModel)]="usernameString" placeholder="Username"></ion-input>
-            <ion-input [(ngModel)]="passwordString" placeholder="Password"></ion-input>
-        </ion-card-content>
-    </ion-card>
   
     <ion-card>
         <ion-card-content>
@@ -52,7 +50,7 @@
             
   
             <ion-fab vertical="center" horizontal="end" slot="fixed">
-                <ion-fab-button size="small" (click)="createPOI()" color="secondary">
+                <ion-fab-button size="small" (click)="createPOI()" color="tertiary">
                   <ion-icon name="checkmark"></ion-icon>
                 </ion-fab-button>
             </ion-fab>
@@ -78,7 +76,7 @@
             <ion-input [(ngModel)]="updatePOIImage" placeholder="Image URL"></ion-input>
   
             <ion-fab vertical="center" horizontal="end" slot="fixed">
-                <ion-fab-button size="small" (click)="changePOI()" color="secondary">
+                <ion-fab-button size="small" (click)="changePOI()" color="tertiary">
                   <ion-icon name="checkmark"></ion-icon>
                 </ion-fab-button>
             </ion-fab>
