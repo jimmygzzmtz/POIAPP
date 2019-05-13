@@ -22,13 +22,19 @@ export class MyAccountPage implements OnInit {
   }
 
   async signUp(){
-    this.http.post('https://poiapi.herokuapp.com/accounts/', {username: this.signUpUsername, password: this.signUpPassword}, {}).subscribe((response : any) => {
+    this.http.post('https://poiapi.herokuapp.com/accounts/', {username: this.signUpUsername, password: this.signUpUsername}, {}).subscribe((response : any) => {
 
-      this.storage.set('token', response.token)
+      this.http.post('https://poiapi.herokuapp.com/accounts/login', {username: this.signUpUsername, password: this.signUpUsername}, {}).subscribe((response: any) => {
 
-      if(this.storage.get('token') != null && this.storage.get('token') != undefined){
-        this.modalController.dismiss();
-      }
+        this.storage.set('name', response.account.username)
+
+        this.storage.set('token', response.token)
+
+        if(this.storage.get('token') != null && this.storage.get('token') != undefined){
+          this.modalController.dismiss();
+        }
+      
+      },(err) => {this.FailAlert()});  
       
     },(err) => {this.FailAlert()});  
   }
