@@ -22,7 +22,7 @@ export class MyAccountPage implements OnInit {
   }
 
   async signUp(){
-    this.http.post('https://poiapi.herokuapp.com/accounts/', {username: this.loginUsername, password: this.loginPassword}, {}).subscribe((response : any) => {
+    this.http.post('https://poiapi.herokuapp.com/accounts/', {username: this.signUpUsername, password: this.signUpPassword}, {}).subscribe((response : any) => {
 
       this.storage.set('token', response.token)
 
